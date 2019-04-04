@@ -1,0 +1,57 @@
+package com.example.betterfeeding;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+public class Menu extends AppCompatActivity {
+
+
+    ListView listView;
+    ArrayList<String> array;
+    ArrayAdapter<String> adapter;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu);
+        listView = (ListView) findViewById(R.id.listview);
+        array = new ArrayList<>();
+        array.add("ITEMS");
+        array.add("Posho");
+        array.add("Rice");
+        array.add("Matooke");
+        array.add("Pizza");
+        array.add("HotDogs");
+        array.add("Chicken");
+        array.add("Sumbiz");
+        array.add("Bread");
+        array.add("Donuts");
+        array.add("Cakes");
+        array.add("Tea");
+        array.add("Soda");
+        array.add("Energy Drinks");
+        array.add("Milk");
+        array.add("Coffee");
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,array);
+        listView.setAdapter(adapter);
+
+        //adding onclick listner for the items
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                Toast.makeText(getApplicationContext()," "+array.get(position),Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
+}
